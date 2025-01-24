@@ -9,7 +9,14 @@ import { Link } from "react-router-dom";
 import WhyUs from "../components/WhyUs";
 import ApplyNow from "../components/ApplyNow";
 const Home = () => {
+  const videoRef = useRef(null);
+
   useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.error("Video playback failed:", error);
+      });
+    }
     AOS.init({ duration: 1000 });
   }, []);
   return (
@@ -17,14 +24,16 @@ const Home = () => {
       {/* Hero Section */}
       <section id="hero" className="clearfix">
         <video
-          src="assets/img/40X.mp4"
+        ref={videoRef}
+          src="/assets/img/40X.mp4"
           autoPlay
           loop
           playsInline
+          muted
           preload="auto"
           className="loaded"
         >
-          <source src="assets/img/40X.mp4" type="video/mp4" />
+          <source src="/assets/img/40X.mp4" type="video/mp4" />
         </video>
         <div className="container" data-aos="fade-up">
           <div className="hero-info" data-aos="zoom-in" data-aos-delay="100">

@@ -30,7 +30,6 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />
@@ -39,7 +38,6 @@ const App = () => {
           <Route path="/services" element={<Service />} />
           {/* Other routes */}
         </Routes>
-      </main>
     </>
   );
 };
